@@ -28,7 +28,13 @@ public class Renderer implements HudRenderCallback {
                     count += inventoryStack.getCount();
                 }
             }
-            mc.getItemRenderer().renderGuiItemOverlay(mc.textRenderer, item, x, y, Integer.toString(count));
+            String display;
+            if (count < 1000) {
+                display = Integer.toString(count);
+            } else {
+                display = Integer.toString(count/1000) + "k";
+            }
+            mc.getItemRenderer().renderGuiItemOverlay(mc.textRenderer, item, x, y, display);
             x += 20;
         }
         mc.getTextureManager().bindTexture(GUI_ICONS_TEXTURE);
