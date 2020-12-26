@@ -4,7 +4,8 @@
   "package": "dzwdz.abacus.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "HandledScreenInvoker"
   ],
   "injectors": {
     "defaultRequire": 1
