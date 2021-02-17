@@ -22,12 +22,17 @@ public class Renderer implements HudRenderCallback {
         int y = scaledHeight - 19;
         for (ItemStack item : Abacus.selectedItems) {
             mc.getItemRenderer().renderInGui(item, x, y);
+
+            // i'm not using PlayerInventory.count because it's ignoring nbt
             int count = 0;
-            for (ItemStack inventoryStack : mc.player.inventory.main) { // todo don't do this on each frame
-                if (inventoryStack.isItemEqualIgnoreDamage(item)) {
+            for (ItemStack inventoryStack : mc.player.inventory.main)
+                if (inventoryStack.isItemEqualIgnoreDamage(item))
                     count += inventoryStack.getCount();
-                }
-            }
+
+            for (ItemStack inventoryStack : mc.player.inventory.offHand)
+                if (inventoryStack.isItemEqualIgnoreDamage(item))
+                    count += inventoryStack.getCount();
+
             String display;
             if (count < 1000) {
                 display = Integer.toString(count);
