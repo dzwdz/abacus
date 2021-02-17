@@ -33,6 +33,8 @@ public class WatchKeybinding extends AmecsKeyBinding implements PriorityKeyBindi
         ItemStack item = slot.getStack().copy();
         if (item.isEmpty()) return false;
 
+        item.setDamage(0);
+
         boolean wasPresent = Abacus.selectedItems.removeIf(item::isItemEqualIgnoreDamage);
         if (!wasPresent)
             Abacus.selectedItems.add(item);
