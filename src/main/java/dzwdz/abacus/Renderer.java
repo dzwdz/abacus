@@ -2,6 +2,7 @@ package dzwdz.abacus;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.options.AttackIndicator;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 
@@ -20,6 +21,10 @@ public class Renderer implements HudRenderCallback {
         int scaledHeight = mc.getWindow().getScaledHeight();
         int x = scaledWidth / 2 + 94;
         int y = scaledHeight - 19;
+
+        if (mc.options.attackIndicator == AttackIndicator.HOTBAR)
+            x += 20;
+
         for (ItemStack item : Abacus.selectedItems) {
             mc.getItemRenderer().renderInGui(item, x, y);
 
