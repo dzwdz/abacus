@@ -41,6 +41,11 @@ public class Renderer implements HudRenderCallback {
             }
             mc.getItemRenderer().renderGuiItemOverlay(mc.textRenderer, item, x, y, display);
             x += 20;
+
+            if (x + 20 > scaledWidth) {
+                x = scaledWidth / 2 + 94;
+                y -= 20;
+            }
         }
         mc.getTextureManager().bindTexture(GUI_ICONS_TEXTURE);
     }
